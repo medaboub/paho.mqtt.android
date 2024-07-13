@@ -71,7 +71,7 @@ class AlarmPingSender implements MqttPingSender {
 		String action = MqttServiceConstants.PING_SENDER
 				+ comms.getClient().getClientId();
 		Log.d(TAG, "Register alarmreceiver to MqttService"+ action);
-		service.registerReceiver(alarmReceiver, new IntentFilter(action));
+		service.registerReceiver(alarmReceiver, new IntentFilter(action), RECEIVER_EXPORTED);
 
 		pendingIntent = PendingIntent.getBroadcast(service, 0, new Intent(
 				action), PendingIntent.FLAG_UPDATE_CURRENT);
